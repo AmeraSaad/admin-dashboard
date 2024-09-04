@@ -1,0 +1,27 @@
+extends ../layout.pug
+
+block content
+  div(class='w-full max-w-3xl bg-white shadow-md rounded-lg p-6')
+    h1(class='text-2xl font-bold mb-4') Update Product
+
+    form(method='post')
+      div(class='mb-4')
+        label(for='title' class='block text-gray-700 font-bold mb-2') Title
+        input(type='text', id='title', name='title', required, class='w-full p-2 border border-gray-300 rounded', value=product.title)
+
+      div(class='mb-4')
+        label(for='description' class='block text-gray-700 font-bold mb-2') Description
+        textarea(id='description', name='description', rows='4', required, class='w-full p-2 border border-gray-300 rounded')= product.description
+
+      div(class='mb-4')
+        label(for='stock' class='block text-gray-700 font-bold mb-2') Stock
+        input(type='number', id='stock', name='stock', required min='0', class='w-full p-2 border border-gray-300 rounded', value=product.stock)
+
+      div(class='mb-4')
+        label(for='expired' class='block text-gray-700 font-bold mb-2') Expired
+        select(id='expired', name='expired', class='w-full p-2 border border-gray-300 rounded')
+          option(value='true', selected=product.expired) Yes
+          option(value='false', selected=!product.expired) No
+
+      div(class='flex justify-end')
+        button(type='submit', class='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600') Update
